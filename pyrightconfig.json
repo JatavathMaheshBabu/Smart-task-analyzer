@@ -1,0 +1,14 @@
+
+{
+  "typeCheckingMode": "basic",
+  "include": ["backend", "frontend"],
+  "exclude": ["**/.venv/**", "**/node_modules/**"],
+  "reportMissingModuleSource": "warning",
+  "reportMissingImports": "warning",
+  "executionEnvironments": [
+    {
+      "root": "backend",
+      "extraPaths": ["./backend", "./backend/task_analyzer", "./backend/tasks"]
+    }
+  ]
+}
