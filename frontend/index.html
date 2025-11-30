@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Task Analyzer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <h1>Smart Task Analyzer</h1>
+      <p class="subtitle">Paste tasks (JSON) or add one — then Analyze to get prioritized suggestions.</p>
+    </header>
+
+    <section class="panel input-panel">
+      <div class="col">
+        <h2>Quick add task</h2>
+        <form id="taskForm" class="task-form" autocomplete="off">
+          <input name="id" id="task_id" placeholder="id (optional)" />
+          <input name="title" id="task_title" placeholder="Title (required)" required />
+          <input name="due_date" id="task_due" placeholder="Due date (YYYY-MM-DD)" />
+          <input name="estimated_hours" id="task_hours" placeholder="Estimated hours (e.g., 2)" />
+          <input name="importance" id="task_importance" placeholder="Importance (1-10)" />
+          <input name="dependencies" id="task_deps" placeholder="Dependencies (comma-separated ids)" />
+          <div class="form-row">
+            <button type="submit" id="addBtn">Add task</button>
+            <button type="button" id="clearListBtn" class="muted">Clear list</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col">
+        <h2>Bulk input (JSON)</h2>
+        <textarea id="jsonInput" placeholder='Paste JSON array: [{"id":"1","title":"Fix bug","due_date":"2025-11-30","estimated_hours":3,"importance":8,"dependencies":[]} ]'></textarea>
+
+        <div class="controls">
+          <label for="strategy">Sorting strategy</label>
+          <select id="strategy">
+            <option value="smart">Smart Balance (backend)</option>
+            <option value="fastest">Fastest Wins (low effort)</option>
+            <option value="impact">High Impact (importance first)</option>
+            <option value="deadline">Deadline Driven</option>
+          </select>
+
+          <button id="analyzeBtn" class="primary">Analyze Tasks</button>
+        </div>
+
+        <div id="inputError" class="error" hidden></div>
+      </div>
+    </section>
+    
+    <section class="panel output-panel">
+      <div class="panel-header">
+        <h2>Results</h2>
+        <div id="summary" class="small muted">No tasks yet</div>
+      </div>
+
+      <ul id="results" class="results" aria-live="polite"></ul>
+
+      <div id="noResults" class="muted small">Run analysis to see suggested tasks here.</div>
+    </section>
+
+    <footer class="footer">
+      <small>Frontend demo • Connects to <code>/api/tasks/analyze/</code> and <code>/api/tasks/suggest/</code></small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
