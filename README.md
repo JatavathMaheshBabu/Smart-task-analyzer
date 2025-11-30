@@ -1,4 +1,4 @@
-Smart Task Analyzer - Backend Development(Python/Django) -> upto 284 line
+Smart Task Analyzer - Backend Development(Python/Django) 
 
 The backend of Smart Task Analyzer implements the full scoring engine, API endpoints, validation layer, and automated test suite required by the assignment.
 This document explains setup steps, algorithm design, trade-offs, testing logic, and my overall reasoning process during development.
